@@ -1,4 +1,6 @@
 const Collaborator = require('../models/collaboratorModel');
+const Task = require('../models/taskModel');
+
 // Get all collaborators
 const getAllCollaborators = async (req, res) => {
     try {
@@ -83,6 +85,35 @@ const removeSkillFromCollaborator = async (req, res) => {
     }
 };
 
+// Get collaborators for a specific user (by their email)
+const getCollaboratorsForUser = async (req, res) => {
+    try {
+        const email = req.params.email;
+
+        // Find all tasks owned by this user
+        const tasks = await Task.find({ owner: email });
+
+        if (!tasks || tasks.length === 0) {
+            return res.status(404).json({ error: 'No tasks found for this user' });
+        }
+
+        // Collect unique collaborators' emails
+        const collaboratorsEmails = [];
+        tasks.forEach(task => {
+            task.collaborators.forEach(collaboratorEmail => {
+                if (!collaboratorsEmails.includes(collaboratorEmail)) {
+                    collaboratorsEmails.push(collaboratorEmail);
+                }
+            });
+        });
+
+        // Return the list of unique collaborator emails
+        res.json(collaboratorsEmails);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
+
 module.exports = {
     getAllCollaborators,
     getCollaboratorByEmail,
@@ -91,4 +122,5 @@ module.exports = {
     getAllSkills,
     addSkillToCollaborator,
     removeSkillFromCollaborator,
+    getCollaboratorsForUser,
 };

@@ -8,6 +8,9 @@ router.get('/:email', collaboratorController.getCollaboratorByEmail); // GET a s
 router.post('/', collaboratorController.createCollaborator); // POST a new collaborator
 router.delete('/:email', collaboratorController.deleteCollaboratorByEmail); // DELETE a collaborator by email
 
+//Additional endpoints
+router.get('/:email/collaborators', collaboratorController.getCollaboratorsForUser);
+
 // Skills Endpoints (nested within collaborators)
 router.get('/:email/skills', collaboratorController.getAllSkills); // GET all skills of a collaborator
 router.post('/:email/skills', collaboratorController.addSkillToCollaborator); // POST a new skill to a collaborator

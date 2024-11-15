@@ -22,5 +22,6 @@ Repositorio para el examen de backend de Ingeniería Web
     ```
     [para detenerlos, docker compose down]
     esto pulleará la imagen de una instancia de mongoDB oficial desde dockerhub, y construirá el contenedor para nuestra aplicación.
-6. La aplicación debería estar en funcionamiento en ‘http://localhost:3000/’. Para poblar la base de datos, una vez iniciada la aplicación hacemos una petición a ‘http://localhost:3000/api/seed/’. Para esta entrega, he creado un script que se ejecuta al hacer una petición a esa ruta que limpia y repuebla la base de datos. De esta forma evito tener que entregar un script aparte, y requerir la instalación de Node para ejecutarlo. Una vez la aplicación se despliegue en producción en la nube, esta ruta lógicamente se eliminaría.
+6. La aplicación debería estar en funcionamiento en ‘http://localhost:3000/’.
 7. Los endpoints desarrollados y las peticiones de prueba para comprobar su correcto funcionamiento se encuentran definidos en una colección Postman adjunta a la entrega.
+8. Para poblar la base de datos con algunos datos de prueba, ejecutar primero todas las request POST de postman en collaborators/ y tasks/ (son 8 en total), que contienen datos ‘dummy’ para crear 4 colaboradores y 4 tareas interconectadas.

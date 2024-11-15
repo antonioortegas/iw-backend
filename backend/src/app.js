@@ -1,13 +1,13 @@
 require('dotenv').config();
 const express = require('express');
-const userRouter = require('./routers/userRouter');
-const eventRouter = require('./routers/eventRouter');
+
+const taskRouter = require('./routers/taskRouter');
+const colaboradoresRouter = require('./routers/collaboratorRouter');
 
 const app = express();
 app.use(express.json());
 
-// Define routes
-app.use('/api/users', userRouter);
-app.use('/api/events', eventRouter);
+app.use('/api/tasks', taskRouter);
+app.use('/api/collaborators', colaboradoresRouter);
 
 module.exports = app;

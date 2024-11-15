@@ -23,10 +23,10 @@ afterAll(async () => {
   console.log('Server closed');
 });
 
-// EXAMPLE Test suite, get all users in /api/users
-describe('GET /api/users', () => {
-  test('It should respond with an array of users', async () => {
-    const response = await axios.get(`${API_URL}/api/users`);
+// EXAMPLE Test suite, get all tasks in /api/tasks
+describe('GET /api/tasks', () => {
+  test('It should respond with an array of tasks', async () => {
+    const response = await axios.get(`${API_URL}/api/tasks`);
     expect(response.data).toBeInstanceOf(Array);
   });
 });
